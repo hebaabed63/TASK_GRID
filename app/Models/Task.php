@@ -17,8 +17,8 @@ class Task extends Model
     }
     public function volunteers()
 {
-    return $this->belongsToMany(Volunteer::class, 'assignments', 'task_id', 'volunteer_id');
+    return $this->hasMany(Volunteer::class);
 }
 
-    
+
 }

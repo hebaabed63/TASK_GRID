@@ -10,10 +10,10 @@ class Volunteer extends Model
 {
     use HasFactory;
      use SoftDeletes;
-protected $fillable=['name','email','phone','skils','availabilty'];
+protected $fillable=['name','email','phone','skils','availabilty','task_id'];
 
-    public function tasks(){
-        return $this->belongsToMany(Task::class,'assignments','volunteer_id', 'task_id');
+    public function task(){
+        return $this->belongsTo(Task::class);
     }
 
 }

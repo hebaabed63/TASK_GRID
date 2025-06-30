@@ -23,9 +23,9 @@
         <div class="form-group mb-3">
             <label>type</label>
             <select name="type" class="form-control" required>
-                <option value="مركز شفاء" @selected(old('type',$place->type))>مركز شفاء</option>
-                <option value="مركز توزيع" @selected(old('type',$place->type))>مركز توزيع</option>
-                <option value="مساعدات" @selected(old('type',$place->type))>مساعدات</option>
+                <option value="مركز شفاء" @selected(old('type',$place->type)=='مركز شفاء')>مركز شفاء</option>
+                <option value="مركز توزيع" @selected(old('type',$place->type)=='مركز توزيع')>مركز توزيع</option>
+                <option value="مساعدات" @selected(old('type',$place->type)=="مساعدات")>مساعدات</option>
             </select>
         </div>
         <div class="form-group mb-3">

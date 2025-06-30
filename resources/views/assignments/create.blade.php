@@ -6,13 +6,14 @@
 <div class="max-w-xl mx-auto mt-8 bg-white p-6 rounded-xl shadow">
     <h2 class="text-2xl font-bold mb-6 text-center">تنسيب متطوع إلى مهمة</h2>
     @if(session()->has('success'))
-
-    @if (session('success'))
-        <p class="alert alert-success">{{ ' Processed successfully!' }}</p>
-        @else
-        <p class="alert alert-danger">{{ ' Processed Faild!' }}</p>
-        @endif
+        <p class="alert alert-success">{{ session('success') }}</p>
  @endif
+
+    @if (session()->has('faild'))
+
+        <p class="alert alert-danger">{{ session('faild') }}</p>
+        @endif
+
 
     <form method="POST" action="{{ route('assignments.store') }}">
         @csrf
@@ -47,11 +48,7 @@
             </select>
         </div>
 
-        {{-- ملاحظات --}}
-        <div class="mb-4">
-            <label for="notes" class="block mb-1 font-semibold">ملاحظات:</label>
-            <textarea name="notes" id="notes" class="w-full border rounded p-2" rows="3"></textarea>
-        </div>
+   
 
         <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded w-full" >
             تأكيد التنسيب

@@ -30,7 +30,7 @@
                 <select name="place_id" class="form-control"  required>
                     <option></option>
                     @foreach ($places as $place)
-                        <option value="{{ $place->id }}" @selected(old('place_id',$place->id))>{{ $place->name }}</option>
+                        <option value="{{ $place->id }}" @selected(old('place_id',$task->place_id)==$place->id)>{{ $place->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -39,7 +39,7 @@
             <select name="category" class="form-control">
                 <option value="">اختر الفئة</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category }}"@selected(old('category',$task->category))>{{ $category }}</option>
+                    <option value="{{ $category }}"@selected(old('category',$task->category)==$category)>{{ $category }}</option>
                 @endforeach
             </select>
             <label for="date">date</label>

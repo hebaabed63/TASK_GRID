@@ -30,19 +30,18 @@ public function getTasks(Place $place)
 
 public function store(Request $request)
 {
-    $request->validate([
-        'volunteer_id' => 'required|exists:volunteers,id',
-        'task_id' => 'required|exists:tasks,id',
-        'notes' => 'nullable|string',
-    ]);
 
-    Assignment::create([
-        'volunteer_id' => $request->volunteer_id,
+    $id=$request->volunteer_id;
+     $volunteer = Volunteer::with('task')->find($id);
+       if(!$volunteer->task){
+    Volunteer::query()->findOrFail($id)->update([
         'task_id' => $request->task_id,
-        'assigned_at' => now(),
-        'notes' => $request->notes,
     ]);
 
     return redirect()->route('assignments.create')->with('success', 'تم التنسيب بنجاح!');
+}else{
+      return redirect()->route('assignments.create')->with('faild', 'المتطوع مضاف الى مهمة مسبقا');
+
+}
 }
 }
